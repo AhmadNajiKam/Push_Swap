@@ -6,13 +6,14 @@
 /*   By: akamamji <akamamji@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 17:45:06 by akamamji          #+#    #+#             */
-/*   Updated: 2026/01/11 17:45:20 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/01/01 17:46:40 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
