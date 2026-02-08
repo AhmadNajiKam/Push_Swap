@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 16:54:50 by akamamji          #+#    #+#             */
-/*   Updated: 2026/01/01 23:50:28 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/08 16:25:14 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <unistd.h>
 
 typedef struct s_list {
-  void *content;
+  int content;
   struct s_list *next;
 } t_list;
 
@@ -57,11 +57,11 @@ void ft_putstr_fd(char *s, int fd);
 void ft_putendl_fd(char *s, int fd);
 void ft_putnbr_fd(int n, int fd);
 
-t_list *ft_lstnew(void *content);
-void ft_lstadd_front(t_list **lst, t_list *new);
+t_list *ft_lstnew(int content);
+void ft_lstadd_front(t_list **lst, t_list *node);
 int ft_lstsize(t_list *lst);
 t_list *ft_lstlast(t_list *lst);
-void ft_lstadd_back(t_list **lst, t_list *new);
+void ft_lstadd_back(t_list **lst, t_list *node);
 void ft_lstdelone(t_list *lst, void (*del)(void *));
 void ft_lstclear(t_list **lst, void (*del)(void *));
 void ft_lstiter(t_list *lst, void (*f)(void *));

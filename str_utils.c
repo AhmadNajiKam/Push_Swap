@@ -1,12 +1,27 @@
-#include "libft.h"
-int ft_isnum(char *str) {
-  int i;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   str_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 16:04:30 by akamamji          #+#    #+#             */
+/*   Updated: 2026/02/08 16:04:33 by akamamji         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-  i = 0;
-  while (str[i]) {
-    if (!ft_isdigit(str[i]))
-      return -1;
-    i++;
-  }
-  return i;
+#include "libft.h"
+
+int	ft_isnum(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (-1);
+		i++;
+	}
+	return (i);
 }

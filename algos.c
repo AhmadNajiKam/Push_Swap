@@ -1,28 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   algos.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akamamji <akamamji@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:42:03 by akamamji          #+#    #+#             */
-/*   Updated: 2026/01/03 18:42:05 by akamamji         ###   ########.fr       */
+/*   Created: 2026/02/08 16:11:42 by akamamji          #+#    #+#             */
+/*   Updated: 2026/02/08 16:20:11 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
-
-void	ft_lstclear(t_list **lst, void (*del)(void *))
-{
-	t_list	*tmp;
-
-	if (!lst || !del)
-		return ;
-	while (*lst)
-	{
-		tmp = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = tmp;
-	}
-	*lst = NULL;
-}
+#include "push_swap.h"
+int handle_bench(t_list **stacka) {}
+int handle_simple(t_list **stacka) {}
+int handle_medium(t_list **stacka) {}
+int handle_complex(t_list **stacka) {}
+int handle_adaptive(t_list **stacka) {}
