@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/08 16:04:04 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/12 12:30:14 by akamamji         ###   ########.fr       */
+/*   Created: 2026/02/11 06:30:54 by akamamji          #+#    #+#             */
+/*   Updated: 2026/02/11 07:59:45 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+t_stack	*init_stack(t_list **stack)
 {
-	t_list	*stack_a;
+	t_stack	*stack_a;
 
-	stack_a = NULL;
-	if (argc > 1)
-		parse_command_line(argc, argv, &stack_a);
-	return (0);
+	stack_a = malloc(sizeof(t_stack));
+	if (!stack_a)
+		return (NULL);
+	stack_a->first = *stack;
+	stack_a->last = ft_lstlast(*stack);
+	stack_a->size = ft_lstsize(stack_a->first);
+	return (stack_a);
 }

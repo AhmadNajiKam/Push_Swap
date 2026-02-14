@@ -10,8 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
-int handle_bench(t_list **stacka) {}
-int handle_simple(t_list **stacka) {}
-int handle_medium(t_list **stacka) {}
-int handle_complex(t_list **stacka) {}
-int handle_adaptive(t_list **stacka) {}
+
+int	handle_bench(t_list **stacka)
+{
+}
+int	handle_simple(t_list **stacka)
+{
+}
+int	handle_medium(t_list **stacka)
+{
+}
+int	handle_complex(t_list **stacka)
+{
+}
+int	handle_adaptive(t_list **stacka)
+{
+}
