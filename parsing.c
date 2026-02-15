@@ -6,14 +6,14 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:03:41 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/14 10:43:41 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/15 14:16:00 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-static int multiplexer(int mode, t_list **stackA) {
+/*static int multiplexer(int mode, t_list **stackA) {
   int error;
 
   error = 0;
@@ -33,7 +33,7 @@ static int multiplexer(int mode, t_list **stackA) {
     error = -1;
   return (error);
 }
-
+*/
 static int check_mode(char **argv) {
   int i;
   int mode;
@@ -68,21 +68,22 @@ int parse_command_line(int argc, char **argv, t_list **stack_a_lst) {
 
   stack_b_lst = NULL;
   i = 1;
+  init_stack(&stack_a);
+  init_stack(&stack_b);
+
   while (i < argc) {
     if (ft_isnum(argv[i])) {
       node = ft_lstnew(ft_atoi(argv[i]));
-      node2 = ft_lstnew(ft_atoi(argv[i]));
-      ft_lstadd_front(stack_a_lst, node);
-      ft_lstadd_front(&stack_b_lst, node2);
+      // node2 = ft_lstnew(ft_atoi(argv[i]));
+      stack_addfront(stack_a, node);
+      // stack_addfront(stack_b, node2);
     }
     i++;
   }
   // return (multiplexer(check_mode(argv), stackA));
-  stack_a = init_stack(stack_a_lst);
-  stack_b = init_stack(&stack_b_lst);
-  swap_both(&stack_a, &stack_b);
-  // push_a(&stack_a, &stack_b);
+  handle_simple(stack_a, stack_b);
+  // shift_up('a', stack_a);
+  // swap('a', stack_a);
   print_stack(stack_a);
-  print_stack(stack_b);
   return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:11:42 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/14 18:59:58 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/15 16:55:26 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -14,13 +14,7 @@
 // int	handle_bench(t_list **stacka)
 // {
 // }
-int handle_simple(t_stack **stack_a, t_stack **stack_b) {
-  int i;
-
-  i = 1;
-
-  return 1;
-}
+int handle_simple(t_stack *stack_a, t_stack *stack_b) {}
 // int	handle_medium(t_list **stacka)
 // {
 // }
