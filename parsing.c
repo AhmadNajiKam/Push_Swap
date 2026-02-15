@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:03:41 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/14 10:14:19 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/14 10:43:41 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ int parse_command_line(int argc, char **argv, t_list **stack_a_lst) {
   // return (multiplexer(check_mode(argv), stackA));
   stack_a = init_stack(stack_a_lst);
   stack_b = init_stack(&stack_b_lst);
-  // swap('a', &stack_a);
+  swap_both(&stack_a, &stack_b);
   // push_a(&stack_a, &stack_b);
-  shift_down('a', &stack_a);
   print_stack(stack_a);
+  print_stack(stack_b);
   return (1);
 }
