@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 10:29:21 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/15 14:15:31 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/15 19:40:45 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void push_a(t_stack *stack_a, t_stack *stack_b) {
   b_top_next = stack_b->first->next;
   stack_addfront(stack_a, stack_b->first);
   stack_b->first = b_top_next;
-  stack_a->size++;
   stack_b->size--;
 }
 
@@ -35,7 +34,6 @@ void push_b(t_stack *stack_a, t_stack *stack_b) {
   a_top_next = stack_a->first->next;
   stack_addfront(stack_b, stack_a->first);
   stack_a->first = a_top_next;
-  stack_b->size++;
   stack_a->size--;
 }
 
