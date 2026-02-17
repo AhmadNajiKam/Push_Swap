@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:11:42 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/17 15:57:20 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/17 16:03:49 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -76,11 +76,11 @@ int handle_simple(t_stack *stack_a, t_stack *stack_b) {
     rotate_stack(stack_b, cost);
     push_b(stack_a, stack_b);
   }
+  while (stack_b->first->content != max)
+    shift_up('b', stack_b);
   while (stack_b->size > 0) {
-    min = find_min(stack_b);
-    while (stack_b->first->content != min)
-      shift_down('b', stack_b);
     push_a(stack_a, stack_b);
+    shift_up('a', stack_a);
   }
   return (1);
 }
