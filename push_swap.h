@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:04:11 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/15 13:10:19 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/17 12:04:20 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,6 @@ void swap_both(t_stack *stack_a, t_stack *stack_b);
 void init_stack(t_stack **stack);
 void stack_addfront(t_stack *stack, t_list *node);
 void stack_addback(t_stack *stack, t_list *node);
+int find_max(t_stack *stack);
+int find_min(t_stack *stack);
 #endif
