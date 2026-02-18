@@ -6,12 +6,27 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 10:30:34 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/17 16:00:52 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/18 12:29:25 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "push_swap.h"
+
+static void update_pos(t_stack *stack) {
+  t_list *current;
+  int i;
+
+  if (!stack || !stack->last)
+    return;
+  current = stack->last;
+  i = 0;
+  while (current) {
+    current->pos = i;
+    i++;
+    current = current->prev;
+  }
+}
 
 void shift_up(char c, t_stack *stack) {
   t_list *node;
@@ -29,6 +44,7 @@ void shift_up(char c, t_stack *stack) {
   node->next = NULL;
   stack->last->next = node;
   stack->last = node;
+  update_pos(stack);
 }
 
 void shift_down(char c, t_stack *stack) {
@@ -47,6 +63,7 @@ void shift_down(char c, t_stack *stack) {
   node->prev = NULL;
   stack->first->prev = node;
   stack->first = node;
+  update_pos(stack);
 }
 
 void shift_up_both(t_stack *stack_a, t_stack *stack_b) {

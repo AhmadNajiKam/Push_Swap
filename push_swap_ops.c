@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 10:29:21 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/17 16:00:15 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/18 12:28:55 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void swap(char c, t_stack *stack) {
   t_list *first;
   t_list *second;
   t_list *third;
+  int temp_pos;
 
   if (stack->size <= 1)
     return;
@@ -53,6 +54,9 @@ void swap(char c, t_stack *stack) {
   first = stack->first;
   second = first->next;
   third = second->next;
+  temp_pos = first->pos;
+  first->pos = second->pos;
+  second->pos = temp_pos;
   second->next = first;
   second->prev = NULL;
   first->prev = second;
