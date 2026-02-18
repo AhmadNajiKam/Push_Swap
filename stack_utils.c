@@ -13,27 +13,32 @@
 #include "libft.h"
 #include "push_swap.h"
 
-void init_stack(t_stack **stack) {
-  *stack = malloc(sizeof(t_stack));
-  if (!*stack)
-    return;
-  (*stack)->first = NULL;
-  (*stack)->last = NULL;
-  (*stack)->size = 0;
+void	init_stack(t_stack **stack)
+{
+	*stack = malloc(sizeof(t_stack));
+	if (!*stack)
+		return ;
+	(*stack)->first = NULL;
+	(*stack)->last = NULL;
+	(*stack)->size = 0;
 }
 
-void stack_addfront(t_stack *stack, t_list *node) {
-  if (!stack || !node)
-    return;
-  node->prev = NULL;
-  node->next = stack->first;
-  if (stack->first) {
-    stack->first->prev = node;
-    node->pos = stack->first->pos + 1;
-  } else {
-    stack->last = node;
-    node->pos = 0;
-  }
-  stack->first = node;
-  stack->size++;
+void	stack_addfront(t_stack *stack, t_list *node)
+{
+	if (!stack || !node)
+		return ;
+	node->prev = NULL;
+	node->next = stack->first;
+	if (stack->first)
+	{
+		stack->first->prev = node;
+		node->pos = stack->first->pos + 1;
+	}
+	else
+	{
+		stack->last = node;
+		node->pos = 0;
+	}
+	stack->first = node;
+	stack->size++;
 }

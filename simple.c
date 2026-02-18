@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:11:42 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/18 12:35:01 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/18 13:45:55 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -32,12 +32,12 @@ static void rotate_stack(t_stack *stack, int cost) {
 }
 
 void handle_simple(t_stack *stack_a, t_stack *stack_b) {
-  t_list *max;
+  t_list *min;
   int pos;
 
   while (stack_a->size > 0) {
-    max = find_max(stack_a);
-    rotate_stack(stack_a, cost_calc(max->pos, stack_a->size));
+    min = find_min(stack_a);
+    rotate_stack(stack_a, cost_calc(min->pos, stack_a->size));
     push_b(stack_a, stack_b);
   }
   while (stack_b->size > 0)

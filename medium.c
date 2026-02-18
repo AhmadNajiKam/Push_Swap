@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akamamji <akamamji@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 17:49:21 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/18 12:44:09 by akamamji         ###   ########.fr       */
+/*   Created: 2026/02/18 13:26:38 by akamamji          #+#    #+#             */
+/*   Updated: 2026/02/18 13:43:18 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
 
-#include "libft.h"
+void handle_medium(t_stack *stack_a, t_stack *stack_b) {
+  int counter;
 
-t_list	*ft_lstnew(int content)
-{
-	t_list	*node;
-
-	node = malloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->content = content;
-	node->next = NULL;
-	node->prev = NULL;
-	node->index = -1;
-	node->pos = 0;
-	return (node);
+  counter = 0;
+  while (stack_a->size > 0) {
+  }
 }

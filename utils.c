@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:03:31 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/18 12:34:03 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/18 13:47:39 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,6 @@
 #include "libft.h"
 #include "push_swap.h"
 #include <limits.h>
-
-void print_stack(t_stack *stack) {
-  if (!stack)
-    return;
-  while (stack->last) {
-    ft_printf("%d ", stack->last->content);
-    stack->last = stack->last->prev;
-  }
-}
 
 t_list *find_max(t_stack *stack) {
   int max;
@@ -56,4 +47,37 @@ t_list *find_min(t_stack *stack) {
     node = node->next;
   }
   return (node_pos);
+}
+
+void fill_indices(t_stack *stack) {
+  t_list *node;
+  t_list *target;
+  int i;
+
+  i = 0;
+  while (i < stack->size) {
+    target = NULL;
+    node = stack->last;
+    while (node) {
+      if (node->index == -1) {
+        if (target == NULL || node->content < target->content)
+          target = node;
+      }
+      node = node->prev;
+    }
+    if (target)
+      target->index = i;
+    i++;
+  }
+}
+
+void print_stack(t_stack *stack) {
+  t_list *iter;
+  if (!stack)
+    return;
+  iter = stack->first;
+  while (iter) {
+    ft_printf("%d ", iter->content);
+    iter = iter->next;
+  }
 }

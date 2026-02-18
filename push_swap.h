@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:04:11 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/18 12:32:09 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/18 12:50:17 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ void stack_addfront(t_stack *stack, t_list *node);
 void stack_addback(t_stack *stack, t_list *node);
 t_list *find_max(t_stack *stack);
 t_list *find_min(t_stack *stack);
+void fill_indices(t_stack *stack);
 #endif

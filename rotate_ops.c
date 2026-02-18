@@ -13,67 +13,73 @@
 #include "ft_printf.h"
 #include "push_swap.h"
 
-static void update_pos(t_stack *stack) {
-  t_list *current;
-  int i;
+static void	update_pos(t_stack *stack)
+{
+	t_list	*current;
+	int		i;
 
-  if (!stack || !stack->last)
-    return;
-  current = stack->last;
-  i = 0;
-  while (current) {
-    current->pos = i;
-    i++;
-    current = current->prev;
-  }
+	if (!stack || !stack->last)
+		return ;
+	current = stack->last;
+	i = 0;
+	while (current)
+	{
+		current->pos = i;
+		i++;
+		current = current->prev;
+	}
 }
 
-void shift_up(char c, t_stack *stack) {
-  t_list *node;
+void	shift_up(char c, t_stack *stack)
+{
+	t_list	*node;
 
-  if (stack->size < 2)
-    return;
-  if (c == 'a')
-    ft_printf("ra\n");
-  else if (c == 'b')
-    ft_printf("rb\n");
-  node = stack->first;
-  stack->first = node->next;
-  stack->first->prev = NULL;
-  node->prev = stack->last;
-  node->next = NULL;
-  stack->last->next = node;
-  stack->last = node;
-  update_pos(stack);
+	if (stack->size < 2)
+		return ;
+	if (c == 'a')
+		ft_printf("ra\n");
+	else if (c == 'b')
+		ft_printf("rb\n");
+	node = stack->first;
+	stack->first = node->next;
+	stack->first->prev = NULL;
+	node->prev = stack->last;
+	node->next = NULL;
+	stack->last->next = node;
+	stack->last = node;
+	update_pos(stack);
 }
 
-void shift_down(char c, t_stack *stack) {
-  t_list *node;
+void	shift_down(char c, t_stack *stack)
+{
+	t_list	*node;
 
-  if (stack->size < 2)
-    return;
-  if (c == 'a')
-    ft_printf("rra\n");
-  else if (c == 'b')
-    ft_printf("rrb\n");
-  node = stack->last;
-  stack->last = node->prev;
-  stack->last->next = NULL;
-  node->next = stack->first;
-  node->prev = NULL;
-  stack->first->prev = node;
-  stack->first = node;
-  update_pos(stack);
+	if (stack->size < 2)
+		return ;
+	if (c == 'a')
+		ft_printf("rra\n");
+	else if (c == 'b')
+		ft_printf("rrb\n");
+	node = stack->last;
+	stack->last = node->prev;
+	stack->last->next = NULL;
+	node->next = stack->first;
+	node->prev = NULL;
+	stack->first->prev = node;
+	stack->first = node;
+	update_pos(stack);
 }
 
-void shift_up_both(t_stack *stack_a, t_stack *stack_b) {
-  ft_printf("rr\n");
-  shift_up('x', stack_a);
-  shift_up('x', stack_b);
+void	shift_up_both(t_stack *stack_a, t_stack *stack_b)
+{
+	ft_printf("rr\n");
+	shift_up('x', stack_a);
+	shift_up('x', stack_b);
 }
 
-void shift_down_both(t_stack *stack_a, t_stack *stack_b) {
-  ft_printf("rrr\n");
-  shift_down('x', stack_a);
-  shift_down('x', stack_b);
+void	shift_down_both(t_stack *stack_a, t_stack *stack_b)
+{
+	ft_printf("rrr\n");
+	shift_down('x', stack_a);
+	shift_down('x', stack_b);
 }
