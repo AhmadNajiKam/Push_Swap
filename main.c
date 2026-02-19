@@ -6,19 +6,14 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:04:04 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/12 12:30:14 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/18 14:03:30 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
-{
-	t_list	*stack_a;
-
-	stack_a = NULL;
-	if (argc > 1)
-		parse_command_line(argc, argv, &stack_a);
-	return (0);
+int main(int argc, char **argv) {
+  if (argc > 1)
+    parse_command_line(argc, argv);
+  return (0);
 }

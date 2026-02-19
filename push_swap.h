@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:04:11 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/18 12:50:17 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/18 14:02:15 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct stack {
   t_list *last;
   int size;
 } t_stack;
-int parse_command_line(int argc, char **argv, t_list **stackA);
+int parse_command_line(int argc, char **argv);
 int ft_isnum(char *str);
 void handle_bench(t_stack *stack_a, t_stack *stack_b);
 void handle_simple(t_stack *stack_a, t_stack *stack_b);
@@ -41,4 +41,6 @@ void stack_addback(t_stack *stack, t_list *node);
 t_list *find_max(t_stack *stack);
 t_list *find_min(t_stack *stack);
 void fill_indices(t_stack *stack);
+int cost_calc(int pos, int size);
+void rotate_stack(t_stack *stack, int cost);
 #endif

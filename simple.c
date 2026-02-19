@@ -6,12 +6,12 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:11:42 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/18 13:45:55 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/18 14:01:40 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-static int cost_calc(int pos, int size) {
+int cost_calc(int pos, int size) {
   int top_pos;
 
   top_pos = size - 1 - pos;
@@ -21,7 +21,7 @@ static int cost_calc(int pos, int size) {
     return (top_pos - size);
 }
 
-static void rotate_stack(t_stack *stack, int cost) {
+void rotate_stack(t_stack *stack, int cost) {
   if (cost > 0) {
     while (cost--)
       shift_up('a', stack);
@@ -33,7 +33,6 @@ static void rotate_stack(t_stack *stack, int cost) {
 
 void handle_simple(t_stack *stack_a, t_stack *stack_b) {
   t_list *min;
-  int pos;
 
   while (stack_a->size > 0) {
     min = find_min(stack_a);

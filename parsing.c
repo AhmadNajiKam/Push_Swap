@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:03:41 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/18 13:46:12 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/18 14:13:20 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int check_mode(char **argv) {
   return (mode);
 }
 
-int parse_command_line(int argc, char **argv, t_list **stack_a_lst) {
+int parse_command_line(int argc, char **argv) {
   t_list *node;
   t_list *stack_b_lst;
   t_stack *stack_a;
@@ -76,7 +76,6 @@ int parse_command_line(int argc, char **argv, t_list **stack_a_lst) {
     }
     i++;
   }
-  handle_simple(stack_a, stack_b);
-  print_stack(stack_a);
+  handle_medium(stack_a, stack_b);
   return (1);
 }
