@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:03:41 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/18 14:13:20 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:11:43 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int parse_command_line(int argc, char **argv) {
     }
     i++;
   }
+  fill_indices(stack_a);
   handle_medium(stack_a, stack_b);
   return (1);
 }
