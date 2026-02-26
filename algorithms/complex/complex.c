@@ -6,12 +6,11 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 01:55:37 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/26 16:05:00 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/26 16:32:56 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <limits.h>
+#include "../../push_swap.h"
 
 static int	find_max_index(t_stack *stack_a)
 {

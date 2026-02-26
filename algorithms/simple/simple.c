@@ -6,10 +6,10 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:11:42 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/18 14:01:40 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/26 16:32:09 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../../push_swap.h"
 
 int	cost_calc(int pos, int size)
 {

@@ -1,29 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akamamji <akamamji@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:28:55 by akamamji          #+#    #+#             */
-/*   Updated: 2026/01/03 18:28:57 by akamamji         ###   ########.fr       */
+/*   Created: 2026/02/26 02:40:38 by akamamji          #+#    #+#             */
+/*   Updated: 2026/02/26 16:33:28 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	handle_bench(t_stack *stack_a, t_stack *stack_b)
 {
-	t_list	*tmp;
-
-	if (!lst || !new)
-		return ;
-	if (!(*lst))
-	{
-		*lst = new;
-		return ;
-	}
-	tmp = ft_lstlast(*lst);
-	tmp->next = new;
-	new->prev = tmp;
 }
