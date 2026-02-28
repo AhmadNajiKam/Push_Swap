@@ -1,19 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_dputchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/08 16:04:04 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/28 05:50:48 by akamamji         ###   ########.fr       */
+/*   Created: 2026/02/28 04:01:51 by akamamji          #+#    #+#             */
+/*   Updated: 2026/02/28 04:05:53 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int main(int argc, char **argv) {
-  if (argc > 1)
-    if (parse_command_line(argc, argv) > -1)
-      return (0);
-}
+#include "ft_dprintf.h"
+int ft_dputchar(int fd, char c) { return (write(fd, &c, 1)); }

@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/08 16:04:04 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/28 05:50:48 by akamamji         ###   ########.fr       */
+/*   Created: 2026/02/28 05:52:29 by akamamji          #+#    #+#             */
+/*   Updated: 2026/02/28 05:56:21 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 #include "push_swap.h"
 
-int main(int argc, char **argv) {
-  if (argc > 1)
-    if (parse_command_line(argc, argv) > -1)
-      return (0);
+int is_sorted(int argc, char **argv) {
+  int i;
+  int sorted;
+
+  i = 1;
+  sorted = 1;
+  while (i < argc - 1) {
+    if (ft_isnum(argv[i]) && ft_isnum(argv[i + 1]) &&
+        ft_atoi(argv[i]) > ft_atoi(argv[i + 1]))
+      sorted = 0;
+    i++;
+  }
+  return sorted;
 }

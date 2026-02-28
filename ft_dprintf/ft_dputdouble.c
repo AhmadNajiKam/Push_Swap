@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_dputdouble.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/08 16:04:04 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/28 05:50:48 by akamamji         ###   ########.fr       */
+/*   Created: 2026/02/28 04:16:52 by akamamji          #+#    #+#             */
+/*   Updated: 2026/02/28 04:23:02 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_dprintf.h"
+int ft_dputdouble(int fd, double number) {
+  int upper;
+  int lower;
+  int count;
 
-int main(int argc, char **argv) {
-  if (argc > 1)
-    if (parse_command_line(argc, argv) > -1)
-      return (0);
+  count = 0;
+  upper = number;
+  lower = number * 100;
+  lower %= 100;
+  count += ft_dputnbr(fd, upper);
+  count += ft_dputchar(fd, '.');
+  count += ft_dputnbr(fd, lower);
+  return count;
 }

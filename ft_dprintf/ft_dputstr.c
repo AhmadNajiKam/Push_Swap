@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_dputstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/08 16:04:04 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/28 05:50:48 by akamamji         ###   ########.fr       */
+/*   Created: 2026/02/28 04:14:12 by akamamji          #+#    #+#             */
+/*   Updated: 2026/02/28 04:15:27 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_dprintf.h"
+int ft_dputstr(int fd, char *s) {
+  int count;
 
-#include "push_swap.h"
-
-int main(int argc, char **argv) {
-  if (argc > 1)
-    if (parse_command_line(argc, argv) > -1)
-      return (0);
+  if (!s) {
+    if (write(fd, "(null)", 6) == -1)
+      return (-1);
+    return (6);
+  }
+  count = ft_strlen(s);
+  if (write(fd, s, count) == -1)
+    return (-1);
+  return (count);
 }

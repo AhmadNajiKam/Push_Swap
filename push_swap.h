@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:04:11 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/28 03:49:58 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/28 05:17:49 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ typedef enum operations_enum {
 } t_op_codes;
 typedef struct s_bench {
   long ops[OP_COUNT];
+  double disorder;
+  int is_adaptive;
+  int strategy;
 } t_bench_stats;
 int parse_command_line(int argc, char **argv);
 int ft_isnum(char *str);

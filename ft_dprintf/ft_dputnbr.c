@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_dputnbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/08 16:04:04 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/28 05:50:48 by akamamji         ###   ########.fr       */
+/*   Created: 2026/02/28 04:03:00 by akamamji          #+#    #+#             */
+/*   Updated: 2026/02/28 04:04:39 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_dprintf.h"
+int ft_dputnbr(int fd, int n) {
+  long nb;
+  int count;
 
-#include "push_swap.h"
-
-int main(int argc, char **argv) {
-  if (argc > 1)
-    if (parse_command_line(argc, argv) > -1)
-      return (0);
+  count = 0;
+  nb = n;
+  if (nb < 0) {
+    count += ft_dputchar(fd, '-');
+    nb *= -1;
+  }
+  if (nb >= 10) {
+    count += ft_dputnbr(fd, nb / 10);
+  }
+  count += ft_dputchar(fd, (nb % 10) + '0');
+  return (count);
 }

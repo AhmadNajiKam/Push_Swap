@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:03:41 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/28 03:52:26 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/02/28 05:48:23 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int start_algo(int argc, char **argv, t_stack *stack_a,
 
   init_bench(&bench_stats);
   mode = get_mode(argc, argv, &bench);
+  bench_stats.disorder = compute_disorder(stack_a);
+  bench_stats.strategy = mode;
   if (mode == SIMPLE)
     handle_simple(stack_a, stack_b, &bench_stats);
   else if (mode == MEDIUM)
@@ -31,6 +33,8 @@ static int start_algo(int argc, char **argv, t_stack *stack_a,
     handle_adaptive(stack_a, stack_b, &bench_stats);
   else
     return (-1);
+  if (mode == ADAPTIVE)
+    bench_stats.is_adaptive = 1;
   if (bench == 1)
     print_bench(&bench_stats);
   return 1;
