@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akamamji <akamamji@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/06 21:58:25 by akamamji          #+#    #+#             */
-/*   Updated: 2026/01/11 17:46:53 by akamamji         ###   ########.fr       */
+/*   Created: 2026/01/01 17:45:06 by akamamji          #+#    #+#             */
+/*   Updated: 2026/02/28 16:28:50 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "../include/libft.h"
 
-#include "libft.h"
-
-int	ft_putstr(char *s)
+size_t	ft_strlen(const char *s)
 {
-	int	count;
+	size_t	i;
 
-	if (!s)
-	{
-		if (write(1, "(null)", 6) == -1)
-			return (-1);
-		return (6);
-	}
-	count = ft_strlen(s);
-	if (write(1, s, count) == -1)
-		return (-1);
-	return (count);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

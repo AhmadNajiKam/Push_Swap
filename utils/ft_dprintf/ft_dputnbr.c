@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_errors.c                                     :+:      :+:    :+:   */
+/*   ft_dputnbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/28 05:52:29 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/28 05:56:21 by akamamji         ###   ########.fr       */
+/*   Created: 2026/02/28 04:03:00 by akamamji          #+#    #+#             */
+/*   Updated: 2026/03/01 01:02:20 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
-#include "push_swap.h"
+#include "../../include/ft_dprintf.h"
 
-int is_sorted(int argc, char **argv) {
-  int i;
-  int sorted;
+int	ft_dputnbr(int fd, int n)
+{
+	long	nb;
+	int		count;
 
-  i = 1;
-  sorted = 1;
-  while (i < argc - 1) {
-    if (ft_isnum(argv[i]) && ft_isnum(argv[i + 1]) &&
-        ft_atoi(argv[i]) > ft_atoi(argv[i + 1]))
-      sorted = 0;
-    i++;
-  }
-  return sorted;
+	count = 0;
+	nb = n;
+	if (nb < 0)
+	{
+		count += ft_dputchar(fd, '-');
+		nb *= -1;
+	}
+	if (nb >= 10)
+	{
+		count += ft_dputnbr(fd, nb / 10);
+	}
+	count += ft_dputchar(fd, (nb % 10) + '0');
+	return (count);
 }

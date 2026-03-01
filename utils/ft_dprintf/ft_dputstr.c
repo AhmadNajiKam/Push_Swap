@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_dputstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/06 21:57:25 by akamamji          #+#    #+#             */
-/*   Updated: 2026/01/07 18:37:23 by akamamji         ###   ########.fr       */
+/*   Created: 2026/02/28 04:14:12 by akamamji          #+#    #+#             */
+/*   Updated: 2026/03/01 01:02:30 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../include/ft_dprintf.h"
 
-int	ft_putnbr(int n)
+int	ft_dputstr(int fd, char *s)
 {
-	long	nb;
-	int		count;
+	int	count;
 
-	count = 0;
-	nb = n;
-	if (nb < 0)
+	if (!s)
 	{
-		count += ft_putchar('-');
-		nb *= -1;
+		if (write(fd, "(null)", 6) == -1)
+			return (-1);
+		return (6);
 	}
-	if (nb >= 10)
-	{
-		count += ft_putnbr(nb / 10);
-	}
-	count += ft_putchar((nb % 10) + '0');
+	count = ft_strlen(s);
+	if (write(fd, s, count) == -1)
+		return (-1);
 	return (count);
 }

@@ -1,43 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_dprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akamamji <akamamji@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 17:32:54 by akamamji          #+#    #+#             */
-/*   Updated: 2026/01/11 17:44:57 by akamamji         ###   ########.fr       */
+/*   Created: 2026/02/27 22:01:01 by akamamji          #+#    #+#             */
+/*   Updated: 2026/03/01 01:01:59 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "../../include/ft_dprintf.h"
 
-#include "ft_printf.h"
-
-static int	parser(char c, va_list args)
+static int	parser(int fd, char c, va_list args)
 {
 	int	count;
 
 	count = 0;
 	if (c == 'c')
-		count += ft_putchar(va_arg(args, int));
+		count += ft_dputchar(fd, va_arg(args, int));
 	else if (c == 's')
-		count += ft_putstr(va_arg(args, char *));
+		count += ft_dputstr(fd, va_arg(args, char *));
 	else if (c == 'd' || c == 'i')
-		count += ft_putnbr(va_arg(args, int));
-	else if (c == 'p')
-		count += ft_putmem(va_arg(args, void *));
-	else if (c == 'x')
-		count += ft_puthex(va_arg(args, int), 'x');
-	else if (c == 'X')
-		count += ft_puthex(va_arg(args, int), 'X');
-	else if (c == 'u')
-		count += ft_putunsigned(va_arg(args, unsigned int));
+		count += ft_dputnbr(fd, va_arg(args, int));
+	else if (c == 'f')
+		count += ft_dputdouble(fd, va_arg(args, double));
 	else if (c == '%')
-		count += ft_putchar('%');
+		count += ft_dputchar(fd, '%');
 	return (count);
 	return (-1);
 }
 
-static int	loop(const char *format, va_list *param_list, int i)
+static int	loop(int fd, const char *format, va_list *param_list, int i)
 {
 	size_t	count;
 	int		return_value;
@@ -48,12 +41,12 @@ static int	loop(const char *format, va_list *param_list, int i)
 	{
 		if (format[i] == '%')
 		{
-			return_value = parser(format[++i], *param_list);
+			return_value = parser(fd, format[++i], *param_list);
 			count += return_value;
 		}
 		else
 		{
-			return_value = ft_putchar(format[i]);
+			return_value = ft_dputchar(fd, format[i]);
 			count += return_value;
 		}
 		if (return_value == -1)
@@ -63,7 +56,7 @@ static int	loop(const char *format, va_list *param_list, int i)
 	return (count);
 }
 
-int	ft_printf(const char *format, ...)
+int	ft_dprintf(int fd, const char *format, ...)
 {
 	size_t	count;
 	va_list	param_list;
@@ -71,7 +64,7 @@ int	ft_printf(const char *format, ...)
 	if (!format)
 		return (-1);
 	va_start(param_list, format);
-	count = loop(format, &param_list, 0);
+	count = loop(fd, format, &param_list, 0);
 	va_end(param_list);
 	return (count);
 }

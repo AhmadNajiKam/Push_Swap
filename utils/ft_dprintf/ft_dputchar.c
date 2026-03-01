@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_dputchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akamamji <akamamji@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:19:10 by akamamji          #+#    #+#             */
-/*   Updated: 2026/01/03 18:19:12 by akamamji         ###   ########.fr       */
+/*   Created: 2026/02/28 04:01:51 by akamamji          #+#    #+#             */
+/*   Updated: 2026/03/01 01:01:58 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/ft_dprintf.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_dputchar(int fd, char c)
 {
-	t_list	*tmp;
-
-	if (!lst)
-		return (NULL);
-	tmp = lst;
-	while (tmp->next)
-	{
-		tmp = tmp->next;
-	}
-	return (tmp);
+	return (write(fd, &c, 1));
 }

@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_utils.c                                        :+:      :+:    :+:   */
+/*   ft_dputdouble.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/08 16:04:30 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/28 02:21:04 by akamamji         ###   ########.fr       */
+/*   Created: 2026/02/28 04:16:52 by akamamji          #+#    #+#             */
+/*   Updated: 2026/03/01 01:02:09 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/ft_dprintf.h"
 
-int ft_isnum(char *str) {
-  int i = 0;
+int	ft_dputdouble(int fd, double number)
+{
+	int	upper;
+	int	lower;
+	int	count;
 
-  if (!str)
-    return (0);
-  if (str[i] == '-' || str[i] == '+')
-    i++;
-  if (!str[i])
-    return (0);
-  while (str[i]) {
-    if (!ft_isdigit(str[i]))
-      return (0);
-    i++;
-  }
-  return (1);
+	count = 0;
+	upper = number;
+	lower = number * 100;
+	lower %= 100;
+	count += ft_dputnbr(fd, upper);
+	count += ft_dputchar(fd, '.');
+	count += ft_dputnbr(fd, lower);
+	return (count);
 }
