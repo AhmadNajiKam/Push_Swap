@@ -50,14 +50,13 @@ Pipe your output into the OS checker to see if you actually sorted it or just sh
 
 We only have two stacks (`A` and `B`) and a few highly specific moves to sort our mess.
 
-| Command | Action |
-| --- | --- |
+| Command | Action | Code Functions
+| --- | --- | --- |
 | **`sa`** | 🔀 Swap the top two elements of Stack A | called `swap` in our code
 | **`sb`** | 🔀 Swap the top two elements of Stack B | called `swap` in our code
 | **`ss`** | 🔀 `sa` and `sb` at the exact same time | called `swap_both` in our code
 | **`pa`** | 📥 Pop from B and Push to the top of A | called `push_a` in our code
 | **`pb`** | 📤 Pop from A and Push to the top of B | called `push_b` in our code
-
 | **`ra`** | 🎡 Rotate Stack A (top element goes to the bottom) | called `shift_up` in our code
 | **`rb`** | 🎡 Rotate Stack B (top element goes to the bottom) | called `shift_up` in our code
 | **`rr`** | 🎡 `ra` and `rb` simultaneously | called `shift_up_both` in our code
