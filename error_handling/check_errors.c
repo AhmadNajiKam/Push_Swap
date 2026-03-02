@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 05:52:29 by akamamji          #+#    #+#             */
-/*   Updated: 2026/03/01 21:19:55 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/03/02 00:27:47 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -52,24 +52,22 @@ static int	is_there_duplicates(int argc, char **argv)
 	return (result);
 }
 
-static int	check_non_integers(int argc, char **argv)
+static int	validate_numbers(int argc, char **argv)
 {
 	int	i;
-	int	flag_count;
 	int	number_started;
-	int	status;
 
 	i = 1;
-	flag_count = 0;
 	number_started = 0;
 	while (i < argc)
 	{
-		status = handle_flag(argv[i], &flag_count, number_started);
-		if (status == -1)
-			return (-1);
-		if (status == 0)
-			if (handle_number(argv[i], &number_started) == -1)
+		if (argv[i][0] == '-' && argv[i][1] == '-')
+		{
+			if (number_started)
 				return (-1);
+		}
+		else if (handle_number(argv[i], &number_started) == -1)
+			return (-1);
 		i++;
 	}
 	return (1);
@@ -77,37 +75,15 @@ static int	check_non_integers(int argc, char **argv)
 
 int	check_args(int argc, char **argv)
 {
+	int	bench;
+
 	if (argc < 2)
 		return (-1);
-	if (check_non_integers(argc, argv) == -1)
+	if (get_mode(argc, argv, &bench) == -1)
+		return (-1);
+	if (validate_numbers(argc, argv) == -1)
 		return (-1);
 	if (is_there_duplicates(argc, argv) != 0)
 		return (-1);
 	return (1);
-}
-
-int	is_sorted(int argc, char **argv)
-{
-	int	i;
-	int	sorted;
-	int	num;
-	int	next_num;
-
-	i = 1;
-	sorted = 1;
-	while (i < argc - 1)
-	{
-		if (is_valid_number(argv[i]) && is_valid_number(argv[i + 1]))
-		{
-			ft_atoi_strict(argv[i], &num);
-			ft_atoi_strict(argv[i + 1], &next_num);
-			if (num > next_num)
-			{
-				sorted = 0;
-				break ;
-			}
-		}
-		i++;
-	}
-	return (sorted);
 }

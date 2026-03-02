@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:11:42 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/28 16:24:10 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/03/02 16:32:49 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/push_swap.h"
@@ -45,20 +45,37 @@ void	rotate_stack(t_stack *stack, int cost, char c, t_bench_stats *bench)
 	}
 }
 
-void	handle_simple(t_stack *stack_a, t_stack *stack_b, t_bench_stats *bench)
+static void	simple_selection_sort(t_stack *a, t_stack *b, t_bench_stats *bench)
 {
 	t_list	*min;
 
-	while (stack_a->size > 0)
+	while (a->size > 0)
 	{
-		min = find_min(stack_a);
-		rotate_stack(stack_a, cost_calc(min->pos, stack_a->size), 'a', bench);
-		push_b(stack_a, stack_b);
+		min = find_min(a);
+		rotate_stack(a, cost_calc(min->pos, a->size), 'a', bench);
+		push_b(a, b);
 		bench->ops[PB]++;
 	}
-	while (stack_b->size > 0)
+	while (b->size > 0)
 	{
-		push_a(stack_a, stack_b);
+		push_a(a, b);
 		bench->ops[PA]++;
 	}
+}
+
+void	handle_simple(t_stack *a, t_stack *b, t_bench_stats *bench)
+{
+	if (is_sorted(a))
+		return ;
+	if (a->size <= 3)
+	{
+		sort_three(a, bench);
+		return ;
+	}
+	if (a->size <= 5)
+	{
+		sort_five(a, b, bench);
+		return ;
+	}
+	simple_selection_sort(a, b, bench);
 }

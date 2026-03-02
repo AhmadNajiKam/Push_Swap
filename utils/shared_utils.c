@@ -6,11 +6,10 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:03:31 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/28 16:27:50 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/03/02 05:17:54 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_dprintf.h"
 #include "../include/libft.h"
 #include "../include/push_swap.h"
 
@@ -80,41 +79,38 @@ void	fill_indices(t_stack *stack)
 	}
 }
 
-void	print_stack(t_stack *stack)
-{
-	t_list	*iter;
-
-	if (!stack)
-		return ;
-	iter = stack->first;
-	while (iter)
-	{
-		ft_dprintf(1, "%d ", iter->content);
-		iter = iter->next;
-	}
-}
-
-float	compute_disorder(t_stack *stack_a)
+double	compute_disorder(t_stack *stack_a)
 {
 	int		mistakes;
 	int		total_pairs;
 	t_list	*iter;
-	t_list	*iter_next;
 
+	if (!stack_a || stack_a->size < 2)
+		return (0.0);
 	mistakes = 0;
-	total_pairs = 0;
+	total_pairs = stack_a->size - 1;
 	iter = stack_a->first;
-	while (iter)
+	while (iter && iter->next)
 	{
-		iter_next = iter->next;
-		while (iter_next)
-		{
-			total_pairs++;
-			if (iter->content > iter_next->content)
-				mistakes++;
-			iter_next = iter_next->next;
-		}
+		if (iter->content > iter->next->content)
+			mistakes++;
 		iter = iter->next;
 	}
-	return ((mistakes * 1.0 / total_pairs) * 100);
+	return ((mistakes * 100.0) / total_pairs);
+}
+
+int	is_sorted(t_stack *stack)
+{
+	t_list	*current;
+
+	if (!stack || !stack->first)
+		return (1);
+	current = stack->first;
+	while (current->next)
+	{
+		if (current->content > current->next->content)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }

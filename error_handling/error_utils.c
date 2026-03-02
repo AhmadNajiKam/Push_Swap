@@ -6,21 +6,24 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 21:13:28 by akamamji          #+#    #+#             */
-/*   Updated: 2026/03/01 21:15:09 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/03/02 00:27:29 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	handle_flag(const char *arg, int *flag_count, int number_started)
+int	handle_flag(const char *arg, int *mode_used, int number_started)
 {
-	if (resolve_mode((char *)arg) == -1)
+	if (resolve_mode(arg) == -1)
 		return (0);
-	if (number_started)
-		return (-1);
-	(*flag_count)++;
-	if (*flag_count > 2)
-		return (-1);
+	if (resolve_mode(arg) != -1)
+	{
+		if (number_started)
+			return (-1);
+		if (*mode_used)
+			return (-1);
+		*mode_used = 1;
+	}
 	return (1);
 }
 
@@ -43,7 +46,7 @@ int	count_numbers(int argc, char **argv)
 	count = 0;
 	while (i < argc)
 	{
-		if (resolve_mode(argv[i]) == -1)
+		if (!(argv[i][0] == '-' && argv[i][1] == '-'))
 			count++;
 		i++;
 	}
@@ -73,7 +76,7 @@ int	fill_numbers(int argc, char **argv, int *arr)
 	index = 0;
 	while (i < argc)
 	{
-		if (resolve_mode(argv[i]) == -1)
+		if (!(argv[i][0] == '-' && argv[i][1] == '-'))
 		{
 			if (!ft_atoi_strict(argv[i], &arr[index]))
 				return (-1);

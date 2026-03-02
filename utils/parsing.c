@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:03:41 by akamamji          #+#    #+#             */
-/*   Updated: 2026/03/01 18:29:00 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/03/02 16:05:53 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int	start_algo(int argc, char **argv, t_stack *stack_a,
 	t_bench_stats	bench_stats;
 	int				mode;
 
+	if (stack_a->size < 2)
+		return (1);
 	init_bench(&bench_stats);
 	mode = get_mode(argc, argv, &bench);
 	bench_stats.disorder = compute_disorder(stack_a);
@@ -41,17 +43,14 @@ static int	start_algo(int argc, char **argv, t_stack *stack_a,
 	return (1);
 }
 
-int	parse_command_line(int argc, char **argv)
+int	parse_command_line(int argc, char **argv, t_stack *stack_a,
+		t_stack *stack_b)
 {
 	t_list	*node;
-	t_stack	*stack_a;
-	t_stack	*stack_b;
 	int		i;
 	int		num;
 
 	i = 1;
-	init_stack(&stack_a);
-	init_stack(&stack_b);
 	while (i < argc)
 	{
 		if (is_valid_number(argv[i]) > 0)

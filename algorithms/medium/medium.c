@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 13:26:38 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/28 16:24:22 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/03/02 16:06:44 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/push_swap.h"
@@ -58,6 +58,18 @@ void	handle_medium(t_stack *stack_a, t_stack *stack_b, t_bench_stats *bench)
 {
 	int	chunk_size;
 
+	if (is_sorted(stack_a))
+		return ;
+	if (stack_a->size <= 3)
+	{
+		sort_three(stack_a, bench);
+		return ;
+	}
+	else if (stack_a->size <= 5)
+	{
+		sort_five(stack_a, stack_b, bench);
+		return ;
+	}
 	if (stack_a->size <= 100)
 		chunk_size = 15;
 	else

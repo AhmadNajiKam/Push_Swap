@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 02:40:38 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/28 18:28:20 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/03/02 04:59:58 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,10 @@ void	print_bench(t_bench_stats *bench)
 	ft_dprintf(2, "[bench] disorder: %f%%\n", bench->disorder);
 	ft_dprintf(2, "[bench] total_ops: %d\n", get_total_ops(bench));
 	print_strategy(bench);
-	ft_dprintf(2, "[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n", 0, 0, 0,
-		bench->ops[PA], bench->ops[PB]);
+	ft_dprintf(2, "[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n",
+		bench->ops[SA], bench->ops[SB], bench->ops[SS], bench->ops[PA],
+		bench->ops[PB]);
 	ft_dprintf(2, "[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d",
-		bench->ops[RA], bench->ops[RB], 0, bench->ops[RRA], bench->ops[RRB], 0);
+		bench->ops[RA], bench->ops[RB], bench->ops[RR], bench->ops[RRA],
+		bench->ops[RRB], bench->ops[RRR]);
 }

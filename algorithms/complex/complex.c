@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 01:55:37 by akamamji          #+#    #+#             */
-/*   Updated: 2026/02/28 16:24:40 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/03/02 16:06:53 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,26 @@ void	handle_complex(t_stack *stack_a, t_stack *stack_b, t_bench_stats *bench)
 	int	max_bits;
 	int	i;
 
+	if (is_sorted(stack_a))
+		return ;
+	if (stack_a->size <= 3)
+	{
+		sort_three(stack_a, bench);
+		return ;
+	}
+	else if (stack_a->size <= 5)
+	{
+		sort_five(stack_a, stack_b, bench);
+		return ;
+	}
 	max_bits = find_max_bits(stack_a);
 	i = 0;
 	while (i < max_bits)
 	{
 		process_bit(stack_a, stack_b, bench, i);
 		restore_from_b(stack_a, stack_b, bench);
+		if (is_sorted(stack_a))
+			return ;
 		i++;
 	}
 }

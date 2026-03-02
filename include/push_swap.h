@@ -6,7 +6,7 @@
 /*   By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:04:11 by akamamji          #+#    #+#             */
-/*   Updated: 2026/03/01 21:18:24 by akamamji         ###   ########.fr       */
+/*   Updated: 2026/03/02 05:17:08 by akamamji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ typedef struct s_bench
 	int		is_adaptive;
 	int		strategy;
 }			t_bench_stats;
-int			parse_command_line(int argc, char **argv);
+int			parse_command_line(int argc, char **argv, t_stack *stack_a,
+				t_stack *stack_b);
 void		handle_simple(t_stack *stack_a, t_stack *stack_b,
 				t_bench_stats *bench);
 void		handle_medium(t_stack *stack_a, t_stack *stack_b,
@@ -64,7 +65,6 @@ void		push_a(t_stack *stack_a, t_stack *stack_b);
 void		push_b(t_stack *stack_a, t_stack *stack_b);
 void		shift_up(char c, t_stack *stack);
 void		shift_down(char c, t_stack *stack);
-void		print_stack(t_stack *stack);
 void		shift_up_both(t_stack *stack_a, t_stack *stack_b);
 void		shift_down_both(t_stack *stack_a, t_stack *stack_b);
 void		swap_both(t_stack *stack_a, t_stack *stack_b);
@@ -79,7 +79,7 @@ void		rotate_stack(t_stack *stack, int cost, char c,
 				t_bench_stats *bench);
 int			ft_strcmp(const char *s1, const char *s2);
 int			get_mode(int argc, char **argv, int *bench);
-float		compute_disorder(t_stack *stack_a);
+double		compute_disorder(t_stack *stack_a);
 void		init_bench(t_bench_stats *bench);
 void		print_bench(t_bench_stats *bench);
 void		update_pos(t_stack *stack);
@@ -91,6 +91,9 @@ int			handle_number(const char *arg, int *number_started);
 int			count_numbers(int argc, char **argv);
 int			has_duplicates(int *arr, int size);
 int			fill_numbers(int argc, char **argv, int *arr);
-int			is_sorted(int argc, char **argv);
+int			is_sorted(t_stack *stack_a);
 int			check_args(int argc, char **argv);
+void		sort_three(t_stack *stack_a, t_bench_stats *bench);
+void		sort_five(t_stack *a, t_stack *b, t_bench_stats *bench);
+int			free_stack(t_stack **stack);
 #endif
