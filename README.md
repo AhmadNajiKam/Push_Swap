@@ -66,6 +66,8 @@ We only have two stacks (`A` and `B`) and a few highly specific moves to sort ou
 
 ---
 
+## Description
+
 ## 🏗️ Architecture: Why Linked Lists?
 
 Since contiguous memory (arrays) is strictly forbidden by the subject, we built our stacks using **Linked Lists**.
@@ -114,7 +116,7 @@ Instead of comparing numbers to each other, we simplify their values into contig
 
 ---
 
-## 📚 Resources & Intel
+## 📚 Resources
 
 Shoutout to the sacred texts that got us through this:
 
