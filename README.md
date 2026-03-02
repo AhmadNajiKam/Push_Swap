@@ -1,16 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    README.md                                          :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: akamamji <akamamji@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/03/02 16:26:56 by akamamji          #+#    #+#              #
-#    Updated: 2026/03/02 16:29:34 by akamamji         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-```markdown
 # 🌪️ Push_Swap: Sorting the Unsortable
 
 Welcome to **Push_Swap**, where we take a chaotic pile of numbers and meticulously organize them using two stacks, a highly restricted set of operations, and an unhealthy amount of caffeine. 
